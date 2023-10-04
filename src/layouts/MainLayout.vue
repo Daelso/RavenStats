@@ -12,7 +12,11 @@
         />
 
         <q-toolbar-title
-          style="font-family: lazymonkdemo; text-shadow: 3px 2px 3px black"
+          style="
+            font-family: lazymonkdemo;
+            text-shadow: 3px 2px 3px black;
+            color: #c4171d;
+          "
         >
           <router-link class="titleLogo" to="/">RavenStats</router-link>
         </q-toolbar-title>
@@ -61,10 +65,15 @@ a:visited,
 a:hover,
 a:active {
   text-decoration: none;
+  color: inherit;
 }
 .titleLogo {
   font-size: 2.5rem;
   color: #e31c25;
+}
+
+body {
+  background-color: #171a1e;
 }
 
 @media only screen and (max-width: 600px) {
