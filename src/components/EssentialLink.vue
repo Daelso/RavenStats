@@ -1,49 +1,42 @@
 <template>
-  <q-item
-    clickable
-    tag="a"
-    target="_blank"
-    :href="link"
-  >
-    <q-item-section
-      v-if="icon"
-      avatar
-    >
-      <q-icon :name="icon" />
+  <q-item clickable style="color: red" @click="goToCatalog">
+    <q-item-section avatar>
+      <q-icon color="secondary" name="storefront" />
     </q-item-section>
 
     <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
-      <q-item-label caption>{{ caption }}</q-item-label>
+      <q-item-label>Catalog</q-item-label>
+      <q-item-label caption style="color: white"
+        >Check out our designs</q-item-label
+      >
+    </q-item-section>
+  </q-item>
+  <q-item clickable style="color: red" @click="goToFaq">
+    <q-item-section avatar>
+      <q-icon color="secondary" name="quiz" />
+    </q-item-section>
+
+    <q-item-section>
+      <q-item-label>FAQ</q-item-label>
+      <q-item-label caption style="color: white"
+        >Frequently Asked Questions</q-item-label
+      >
     </q-item-section>
   </q-item>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'EssentialLink',
-  props: {
-    title: {
-      type: String,
-      required: true
+  name: "EssentialLink",
+  methods: {
+    goToFaq() {
+      this.$router.push({ name: "faq" });
     },
-
-    caption: {
-      type: String,
-      default: ''
+    goToCatalog() {
+      this.$router.push({ name: "home" });
     },
-
-    link: {
-      type: String,
-      default: '#'
-    },
-
-    icon: {
-      type: String,
-      default: ''
-    }
-  }
-})
+  },
+});
 </script>
