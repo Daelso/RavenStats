@@ -97,7 +97,7 @@ module.exports = configure(function (ctx) {
       // directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: ["Notify", "Dialog", "Loading", "Meta"],
     },
 
     // animations: 'all', // --- includes all animations
@@ -146,7 +146,7 @@ module.exports = configure(function (ctx) {
       manifest: {
         name: `RavenStats`,
         short_name: `RavenStats`,
-        description: `Another project for displaying ss13 Lifeweb stats`,
+        description: `A web interface for accessing the various collected showlads data from Lifeweb, a Space Station 13 server.`,
         display: "standalone",
         orientation: "portrait",
         background_color: "#ffffff",

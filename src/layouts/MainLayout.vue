@@ -20,14 +20,6 @@
         >
           <router-link class="titleLogo" to="/">RavenStats</router-link>
         </q-toolbar-title>
-
-        <q-item clickable>
-          <q-btn dense color="black" round icon="shopping_cart"> </q-btn>
-        </q-item>
-
-        <q-item v-if="logInCheck" clickable>
-          <q-avatar @click="toggleRightDrawer"> </q-avatar>
-        </q-item>
       </q-toolbar>
     </q-header>
 
@@ -51,10 +43,14 @@
       class="bg-transparent text-white text-center"
       style="opacity: 35%"
     >
-      <router-link to="/privacy">Privacy</router-link> |
-      <router-link to="/terms">Terms of Use</router-link> |
-      <router-link to="/contact">Contact</router-link> |
-      <router-link to="/darkpack">Dark Pack</router-link>
+      <a href="https://github.com/Daelso/RavenStatsScraper" target="_blank">
+        Scraper Github
+      </a>
+      |
+      <a href="https://github.com/Daelso/RavenStats" target="_blank">
+        Site Github
+      </a>
+      - Made by Wel Ard (Daelso)
     </q-footer>
   </q-layout>
 </template>

@@ -1,25 +1,18 @@
 <template>
-  <q-item clickable style="color: red" @click="goToCatalog">
+  <q-item
+    clickable
+    style="color: #c4171d"
+    href="https://discord.gg/lfwb"
+    target="_blank"
+  >
     <q-item-section avatar>
-      <q-icon color="secondary" name="storefront" />
+      <q-icon color="#C4171D" name="discord" style="scale: 120%" />
     </q-item-section>
 
     <q-item-section>
-      <q-item-label>Catalog</q-item-label>
+      <q-item-label>Lifeweb Hideout</q-item-label>
       <q-item-label caption style="color: white"
-        >Check out our designs</q-item-label
-      >
-    </q-item-section>
-  </q-item>
-  <q-item clickable style="color: red" @click="goToFaq">
-    <q-item-section avatar>
-      <q-icon color="secondary" name="quiz" />
-    </q-item-section>
-
-    <q-item-section>
-      <q-item-label>FAQ</q-item-label>
-      <q-item-label caption style="color: white"
-        >Frequently Asked Questions</q-item-label
+        >A ticket to Ravenheart</q-item-label
       >
     </q-item-section>
   </q-item>
