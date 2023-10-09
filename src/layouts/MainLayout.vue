@@ -20,6 +20,19 @@
         >
           <router-link class="titleLogo" to="/">RavenStats</router-link>
         </q-toolbar-title>
+
+        <q-item clickable style="align-items: center">
+          <q-avatar icon="live_help">
+            <q-tooltip
+              style="background-color: #222831; color: white; font-size: 1rem"
+              transition-show="scale"
+              transition-hide="scale"
+            >
+              If you would like your data anonymized, contact Wel Ard on
+              Discord. This is 4fun, don't take it too serious.</q-tooltip
+            >
+          </q-avatar>
+        </q-item>
       </q-toolbar>
     </q-header>
 
@@ -74,7 +87,7 @@ body {
 
 @media only screen and (max-width: 600px) {
   .titleLogo {
-    display: none;
+    font-size: 1rem;
   }
 }
 </style>
