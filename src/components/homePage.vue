@@ -59,18 +59,20 @@ const metaData = {
 
 export default {
   async created() {
-    if (window.location.href.includes("localhost")) {
-      this.baseUrl = "http://localhost:5000";
-    } else {
-      this.baseUrl = window.location.origin;
-    }
+    this.test = await this.$axios.get(
+      "https://www.schrecknet.live/showlads/ckey/daelso",
+      {
+        withCredentials: true,
+      }
+    );
+    console.log(this.test);
   },
 
   data() {
     return {
-      baseUrl: null,
       ckey: "",
       ckey_options: [],
+      test: null,
     };
   },
   setup() {
