@@ -6,9 +6,10 @@
         class="picker"
         standout
         v-model="ckey"
-        :options="ckey_options"
+        :options="filteredOptions"
         label="Ckey"
         use-input
+        @filter="filterFn"
         input-debounce="2"
         clearable
         color="black"
@@ -59,12 +60,22 @@ const metaData = {
 
 export default {
   async created() {
-    this.test = await this.$axios.get(
-      "https://www.schrecknet.live/showlads/ckey/daelso",
+    const ckey_options = await this.$axios.get(
+      "http://localhost:5000/showlads/ckeys",
       {
         withCredentials: true,
       }
     );
+    this.ckey_options = ckey_options.data;
+    console.log(this.ckey_options);
+
+    const ckey_data = await this.$axios.get(
+      "http://localhost:5000/showlads/ckey/daelso",
+      {
+        withCredentials: true,
+      }
+    );
+    this.test = ckey_data.data;
     console.log(this.test);
   },
 
@@ -73,12 +84,32 @@ export default {
       ckey: "",
       ckey_options: [],
       test: null,
+      filteredOptions: null,
     };
   },
   setup() {
     useMeta(metaData);
 
     return {};
+  },
+
+  methods: {
+    filterFn(val, update) {
+      if (val === "") {
+        update(() => {
+          this.filteredOptions = this.ckey_options;
+        });
+        return;
+      }
+
+      update(() => {
+        const needle = val.toLowerCase();
+
+        this.filteredOptions = this.ckey_options.filter(
+          (v) => v.toLowerCase().indexOf(needle) > -1
+        );
+      });
+    },
   },
 };
 </script>
