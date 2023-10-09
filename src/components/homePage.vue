@@ -18,10 +18,13 @@
         filled
       />
     </div>
+    <div v-if="this.ckey">
+      <ckey_lookup v-model:ckey="this.ckey" />
+    </div>
   </div>
 </template>
 
-<style>
+<style scoped>
 .banner {
   display: flex;
   justify-content: center;
@@ -42,6 +45,7 @@
 <script>
 import { useQuasar } from "quasar";
 import { ref } from "vue";
+import ckey_lookup from "./ckey/ckey_lookup.vue";
 
 import { useMeta } from "quasar";
 
@@ -59,6 +63,7 @@ const metaData = {
 };
 
 export default {
+  components: { ckey_lookup },
   async created() {
     const ckey_options = await this.$axios.get(
       "http://localhost:5000/showlads/ckeys",
@@ -67,23 +72,12 @@ export default {
       }
     );
     this.ckey_options = ckey_options.data;
-    console.log(this.ckey_options);
-
-    const ckey_data = await this.$axios.get(
-      "http://localhost:5000/showlads/ckey/daelso",
-      {
-        withCredentials: true,
-      }
-    );
-    this.test = ckey_data.data;
-    console.log(this.test);
   },
 
   data() {
     return {
       ckey: "",
       ckey_options: [],
-      test: null,
       filteredOptions: null,
     };
   },
