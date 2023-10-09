@@ -24,7 +24,12 @@
         <q-item clickable style="align-items: center">
           <q-avatar icon="live_help">
             <q-tooltip
-              style="background-color: #222831; color: white; font-size: 1rem"
+              style="
+                background-color: #222831;
+                color: white;
+                font-size: 1rem;
+                font-family: monospace;
+              "
               transition-show="scale"
               transition-hide="scale"
             >
@@ -96,21 +101,6 @@ body {
 import { defineComponent, ref } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
 
-const linksList = [
-  {
-    title: "Docs",
-    caption: "quasar.dev",
-    icon: "school",
-    link: "login",
-  },
-  {
-    title: "Github",
-    caption: "github.com/quasarframework",
-    icon: "code",
-    link: "https://github.com/quasarframework",
-  },
-];
-
 export default defineComponent({
   name: "MainLayout",
 
@@ -120,17 +110,11 @@ export default defineComponent({
 
   setup() {
     const leftDrawerOpen = ref(false);
-    const rightDrawerOpen = ref(false);
 
     return {
-      essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
-      },
-      rightDrawerOpen,
-      toggleRightDrawer() {
-        rightDrawerOpen.value = !rightDrawerOpen.value;
       },
     };
   },
