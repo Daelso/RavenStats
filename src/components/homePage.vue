@@ -39,6 +39,10 @@
   .banner {
     font-size: 1.5em;
   }
+  .picker {
+    width: 22em;
+    margin: auto;
+  }
 }
 </style>
 

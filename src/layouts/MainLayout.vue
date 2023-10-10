@@ -2,14 +2,14 @@
   <q-layout view="hhh lpR lfr">
     <q-header elevated>
       <q-toolbar style="background-color: #222831">
-        <q-btn
+        <!-- <q-btn
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
-        />
+        /> -->
 
         <q-toolbar-title
           style="
