@@ -100,10 +100,10 @@ body {
 <script>
 import { defineComponent, ref } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
-import bum_king from "../assets/images/bum_king.png";
-import randy from "../assets/images/randy.png";
-import cave from "../assets/images/cave.png";
-import operator from "../assets/images/operator.png";
+import bum_king from "../../public/images/bum_king.png";
+import randy from "../../public/images/randy.png";
+import cave from "../../public/images/cave.png";
+import operator from "../../public/images/operator.png";
 
 import { useQuasar } from "quasar";
 
