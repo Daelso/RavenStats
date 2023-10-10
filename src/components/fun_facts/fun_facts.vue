@@ -3,6 +3,7 @@
     <div class="banner">Fun Facts</div>
 
     <div>
+      <q-spinner-pie color="white" v-if="fun_facts === null" size="4em" />
       <q-carousel
         v-if="fun_facts != null"
         v-model="slide"
@@ -24,7 +25,7 @@
         <q-carousel-slide :name="1" class="column no-wrap flex-center">
           <q-icon name="app:bum_king" size="64px" />
           <div class="q-mt-md text-center fact-text">
-            The King of the Bum's is {{ fun_facts[1].ckey }} - Played
+            The King of the Bums is {{ fun_facts[1].ckey }} - Played
             {{ fun_facts[1].role_count }} rounds
           </div>
         </q-carousel-slide>
@@ -75,7 +76,7 @@
 
 .fun_facts {
   height: 11rem;
-  width: 35rem;
+  width: 30rem;
   text-shadow: 3px 2px 3px black;
 }
 
@@ -95,18 +96,19 @@
 </style>
 
 <script>
-import { useQuasar } from "quasar";
-import { ref } from "vue";
-
 export default {
   name: "fun_facts",
 
   async created() {
+    this.$q.loading.show({
+      delay: 450, // ms
+    });
     const fun_facts = await this.$axios.get(
       `http://localhost:5000/showlads/fun_facts`
     );
 
     this.fun_facts = fun_facts.data;
+    this.$q.loading.hide();
   },
 
   data() {
