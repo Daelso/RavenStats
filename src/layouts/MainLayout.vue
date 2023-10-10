@@ -100,6 +100,12 @@ body {
 <script>
 import { defineComponent, ref } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
+import bum_king from "../assets/images/bum_king.png";
+import randy from "../assets/images/randy.png";
+import cave from "../assets/images/cave.png";
+import operator from "../assets/images/operator.png";
+
+import { useQuasar } from "quasar";
 
 export default defineComponent({
   name: "MainLayout",
@@ -109,7 +115,23 @@ export default defineComponent({
   },
 
   setup() {
+    const $q = useQuasar();
+
+    const myIcons = {
+      "app:bum_king": `img:${bum_king}`,
+      "app:randy": `img:${randy}`,
+      "app:reactor": `img:${cave}`,
+      "app:operator": `img:${operator}`,
+    };
+
     const leftDrawerOpen = ref(false);
+
+    $q.iconMapFn = (iconName) => {
+      const icon = myIcons[iconName];
+      if (icon !== void 0) {
+        return { icon: icon };
+      }
+    };
 
     return {
       leftDrawerOpen,
@@ -118,7 +140,5 @@ export default defineComponent({
       },
     };
   },
-
-  methods: {},
 });
 </script>
