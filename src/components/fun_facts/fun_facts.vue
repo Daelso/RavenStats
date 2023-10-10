@@ -42,11 +42,19 @@
           </div>
         </q-carousel-slide>
         <q-carousel-slide :name="4" class="column no-wrap flex-center">
-          <q-icon name="app:operator" size="56px" />
+          <q-icon name="app:operator" size="64px" />
           <div class="q-mt-md text-center fact-text">
             The most common name in Ravenheart is
             {{ fun_facts[3].character_name }} - Played
             {{ fun_facts[3].played_count }} times
+          </div>
+        </q-carousel-slide>
+        <q-carousel-slide :name="5" class="column no-wrap flex-center">
+          <q-icon name="app:bum_king" size="64px" />
+          <div class="q-mt-md text-center fact-text">
+            The most common Migrant seen in the caves of Ravenheart is
+            {{ fun_facts[4].role }} - played
+            {{ fun_facts[4].count_played }} times
           </div>
         </q-carousel-slide>
       </q-carousel>
@@ -72,7 +80,7 @@
 }
 
 .fact-text {
-  font-family: TMUnicorn;
+  font-family: monospace;
 }
 
 @media (max-width: 800px) {
