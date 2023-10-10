@@ -14,18 +14,37 @@
           no-data-label="No data found!"
           table-class="stat-table"
           :filter="filter"
+          no-results-label="Your search yielded no results!"
           :loading="loading"
         >
+          <template v-slot:top-right>
+            <q-input
+              borderless
+              debounce="300"
+              v-model="filter"
+              dark
+              placeholder="Search"
+            >
+              <template v-slot:append>
+                <q-icon name="search" />
+              </template>
+            </q-input>
+          </template>
+
           <template v-slot:body="props">
             <q-tr :props="props">
               <q-td
                 key="character_name"
                 :props="props"
-                @click="find_static_count()"
+                @click="find_static_count(props.row.character_name)"
               >
                 {{ props.row.character_name }}
               </q-td>
-              <q-td key="role" :props="props" @click="find_role_count()">
+              <q-td
+                key="role"
+                :props="props"
+                @click="find_role_count(props.row.role)"
+              >
                 {{ props.row.role }}
               </q-td>
               <q-td key="date" :props="props">
@@ -123,6 +142,52 @@ export default {
         this.notif_shown = true;
       } catch (error) {
         console.error("Error fetching data:", error);
+      }
+    },
+    async find_static_count(character_name) {
+      try {
+        const response = await this.$axios.get(
+          `http://localhost:5000/showlads/find_static/${this.ckey}/${character_name}`
+        );
+
+        this.$q.notify({
+          message: `${this.ckey} has played ${character_name} ${response.data[0].played_count} times!`,
+          color: "primary",
+          avatar: randy,
+          position: "bottom",
+          timeout: 6500,
+        });
+      } catch (err) {
+        console.log(err);
+        this.$q.notify({
+          color: "red-5",
+          textColor: "white",
+          icon: "warning",
+          message: err.message,
+        });
+      }
+    },
+    async find_role_count(role) {
+      try {
+        const response = await this.$axios.get(
+          `http://localhost:5000/showlads/find_role_played/${this.ckey}/${role}`
+        );
+
+        this.$q.notify({
+          message: `${this.ckey} has played ${role} ${response.data[0].played_count} times!`,
+          color: "primary",
+          avatar: randy,
+          position: "bottom",
+          timeout: 6500,
+        });
+      } catch (err) {
+        console.log(err);
+        this.$q.notify({
+          color: "red-5",
+          textColor: "white",
+          icon: "warning",
+          message: err.message,
+        });
       }
     },
   },
