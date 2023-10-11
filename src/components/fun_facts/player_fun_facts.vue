@@ -1,64 +1,17 @@
 <template>
   <div class="q-pa-md" style="max-width: 1400px">
-    <div class="banner">Fun Facts</div>
+    <div class="banner">{{ this.ckey }} Fun Facts</div>
+    <q-spinner-pie color="white" v-if="fun_facts === null" size="4em" />
 
-    <div>
-      <q-spinner-pie color="white" v-if="fun_facts === null" size="4em" />
-      <q-carousel
-        v-if="fun_facts != null"
-        v-model="slide"
-        transition-prev="jump-right"
-        transition-next="jump-left"
-        swipeable
-        animated
-        rounded-borders
-        control-color="white"
-        navigation
-        :autoplay="autoplay"
-        infinite
-        padding
-        @mouseenter="autoplay = false"
-        @mouseleave="autoplay = true"
-        arrows
-        class="bg-primary text-white shadow-1 rounded-borders fun_facts"
-      >
-        <q-carousel-slide :name="1" class="column no-wrap flex-center">
-          <q-icon name="app:bum_king" size="64px" />
-          <div class="q-mt-md text-center fact-text">
-            The King of the Bums is {{ fun_facts[1].ckey }} - Played
-            {{ fun_facts[1].role_count }} rounds
-          </div>
-        </q-carousel-slide>
-        <q-carousel-slide :name="2" class="column no-wrap flex-center">
-          <q-icon name="app:randy" size="64px" />
-          <div class="q-mt-md text-center fact-text">
-            Randy's Most Played Role Is: {{ fun_facts[0].role }}
-          </div>
-        </q-carousel-slide>
-        <q-carousel-slide :name="3" class="column no-wrap flex-center">
-          <q-icon name="app:reactor" size="64px" />
-          <div class="q-mt-md text-center fact-text">
-            The least played role in Lifeweb is {{ fun_facts[2].role }} - Played
-            a Total of {{ fun_facts[2].role_count }} times
-          </div>
-        </q-carousel-slide>
-        <q-carousel-slide :name="4" class="column no-wrap flex-center">
-          <q-icon name="app:operator" size="64px" />
-          <div class="q-mt-md text-center fact-text">
-            The most common name in Ravenheart is
-            {{ fun_facts[3].character_name }} - Played
-            {{ fun_facts[3].played_count }} times
-          </div>
-        </q-carousel-slide>
-        <q-carousel-slide :name="5" class="column no-wrap flex-center">
-          <q-icon name="app:bum_king" size="64px" />
-          <div class="q-mt-md text-center fact-text">
-            The most common Migrant seen in the caves of Ravenheart is
-            {{ fun_facts[4].role }} - played
-            {{ fun_facts[4].count_played }} times
-          </div>
-        </q-carousel-slide>
-      </q-carousel>
+    <div v-if="fun_facts" class="fun-facts-container">
+      <div class="q-pa-sm">
+        Most Commonly Played Character: {{ fun_facts[1].character_name }} -
+        Played {{ fun_facts[1].static_count }} times
+      </div>
+      <div class="q-pa-sm">
+        Most Commonly Role: {{ fun_facts[0].role }} - Played
+        {{ fun_facts[0].role_count }} times
+      </div>
     </div>
   </div>
 </template>
@@ -66,6 +19,7 @@
 <style scoped>
 .banner {
   display: flex;
+
   justify-content: center;
   margin-bottom: 1em;
   font-family: TMUnicorn;
@@ -74,61 +28,57 @@
   color: #c4171d;
 }
 
-.fun_facts {
-  height: 11rem;
-  width: 30rem;
-  text-shadow: 3px 2px 3px black;
-}
-
-.fact-text {
-  font-family: monospace;
+.fun-facts-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #222831;
+  border: 1px solid grey;
+  border-radius: 5px;
+  color: white;
 }
 
 @media (max-width: 800px) {
   .banner {
     font-size: 1.5em;
   }
-  .fun_facts {
-    height: 15rem;
-    width: 20rem;
+
+  .fun-facts-container {
+    max-width: 20em;
+    margin: auto;
   }
 }
 </style>
 
 <script>
 export default {
-  name: "fun_facts",
-
-  async created() {
-    this.$q.loading.show({
-      delay: 450, // ms
-    });
-    const fun_facts = await this.$axios.get(
-      `http://localhost:5000/showlads/fun_facts`
-    );
-
-    this.fun_facts = fun_facts.data;
-    this.$q.loading.hide();
-  },
+  name: "player_fun_facts",
+  props: ["ckey"],
 
   data() {
     return {
       fun_facts: null,
-      slide: 1,
-      autoplay: true,
-      lorem:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.",
     };
   },
 
+  watch: {
+    ckey: {
+      handler(newCkey, oldCkey) {
+        if (newCkey !== oldCkey) {
+          this.fetchCkeyData(newCkey);
+        }
+      },
+      immediate: true, // Trigger the watcher immediately after the component is created
+    },
+  },
   methods: {
     async fetchCkeyData(ckey) {
       try {
         const response = await this.$axios.get(
-          `http://localhost:5000/showlads/ckey/${this.ckey}`
+          `http://localhost:5000/showlads/ckey_fun_facts/${this.ckey}`
         );
-        this.ckey_data = response.data;
-        console.log(this.ckey_data);
+        this.fun_facts = response.data;
       } catch (error) {
         console.error("Error fetching data:", error);
       }

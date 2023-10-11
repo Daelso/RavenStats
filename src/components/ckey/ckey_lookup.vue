@@ -1,6 +1,7 @@
 <template>
   <div class="q-pa-md" style="max-width: 1400px">
     <role_type_pie :ckey="this.ckey" />
+    <player_fun_facts :ckey="this.ckey" />
     <div>
       <div class="q-pa-md">
         <q-table
@@ -11,6 +12,7 @@
           :columns="columns"
           v-model:pagination="pagination"
           dark
+          class="table-guy"
           color="white"
           no-data-label="No data found!"
           table-class="stat-table"
@@ -68,6 +70,9 @@
   .stat-table {
     width: 5rem;
   }
+  .table-guy {
+    width: 25em;
+  }
 }
 </style>
 
@@ -75,11 +80,13 @@
 import { date } from "quasar";
 import randy from "../../../public/images/randy.png";
 import role_type_pie from "../charts/role_type_breakdown.vue";
+import player_fun_facts from "../fun_facts/player_fun_facts.vue";
+
 export default {
   name: "ckey_charts",
   props: ["ckey"],
   emits: ["update:ckey"],
-  components: { role_type_pie },
+  components: { role_type_pie, player_fun_facts },
 
   data() {
     return {

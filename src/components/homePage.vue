@@ -35,6 +35,11 @@
   color: #c4171d;
 }
 
+.picker {
+  max-width: 28em;
+  margin: auto;
+}
+
 @media (max-width: 800px) {
   .banner {
     font-size: 1.5em;
