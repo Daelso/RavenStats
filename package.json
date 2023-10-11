@@ -1,7 +1,7 @@
 {
   "name": "ravenstats-portal",
   "version": "0.0.1",
-  "description": "Another project for displaying ss13 Lifeweb stats",
+  "description": "Lifeweb stat-tracking website. Built off of showlads data.",
   "productName": "RavenStats",
   "author": "Daelso",
   "private": true,

@@ -187,7 +187,7 @@ export default {
         );
 
         this.$q.notify({
-          message: `${this.ckey} has played ${role} ${response.data[0].played_count} times!`,
+          message: `${this.ckey} has played ${role} ${response.data.played_count} times!`,
           color: "primary",
           avatar: randy,
           position: "bottom",
