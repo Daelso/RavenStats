@@ -38,6 +38,9 @@ export default {
           "Church Role",
           "Lateparty Role",
           "Bandit Role",
+          "Medical Role",
+          "Business Role",
+          "Special Role",
         ],
         datasets: [
           {
@@ -51,6 +54,9 @@ export default {
               "#ceb5a2",
               "#858f82",
               "#a8b6b6",
+              "#3B722E",
+              "#f1c232",
+              "#FF1DCD",
             ],
             data: null,
           },
