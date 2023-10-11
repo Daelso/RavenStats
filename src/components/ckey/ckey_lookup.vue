@@ -179,8 +179,11 @@ export default {
     },
     async find_role_count(role) {
       try {
+        // Encode the role parameter before appending it to the URL
+        const encodedRole = encodeURIComponent(role);
+
         const response = await this.$axios.get(
-          `https://www.schrecknet.live/showlads/find_role_played/${this.ckey}/${role}`
+          `https://www.schrecknet.live/showlads/find_role_played/${this.ckey}/${encodedRole}`
         );
 
         this.$q.notify({
