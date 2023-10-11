@@ -38,8 +38,8 @@
         <q-carousel-slide :name="3" class="column no-wrap flex-center">
           <q-icon name="app:reactor" size="64px" />
           <div class="q-mt-md text-center fact-text">
-            The least played role in Lifeweb is {{ fun_facts[2].role }} - Played
-            a Total of {{ fun_facts[2].role_count }} times
+            The least played role in Lifeweb is Expedition Leader - Played a
+            Total of 17 times
           </div>
         </q-carousel-slide>
         <q-carousel-slide :name="4" class="column no-wrap flex-center">
