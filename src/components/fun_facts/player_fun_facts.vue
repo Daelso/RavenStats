@@ -5,8 +5,8 @@
 
     <div v-if="fun_facts" class="fun-facts-container">
       <div class="q-pa-sm">
-        Most Commonly Played Character: {{ fun_facts[1].character_name }} -
-        Played {{ fun_facts[1].static_count }} times
+        Most Commonly Played Character: {{ fun_facts[1].first_name }} - Played
+        {{ fun_facts[1].static_count }} times
       </div>
       <div class="q-pa-sm">
         Most Commonly Played Role: {{ fun_facts[0].role }} - Played
