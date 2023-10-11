@@ -134,7 +134,7 @@ export default {
     async fetchCkeyData(ckey) {
       try {
         const response = await this.$axios.get(
-          `http://localhost:5000/showlads/ckey/${this.ckey}`
+          `https://www.schrecknet.live/showlads/ckey/${this.ckey}`
         );
         this.ckey_data = response.data;
 
@@ -157,7 +157,7 @@ export default {
     async find_static_count(character_name) {
       try {
         const response = await this.$axios.get(
-          `http://localhost:5000/showlads/find_static/${this.ckey}/${character_name}`
+          `https://www.schrecknet.live/showlads/find_static/${this.ckey}/${character_name}`
         );
 
         this.$q.notify({
@@ -180,7 +180,7 @@ export default {
     async find_role_count(role) {
       try {
         const response = await this.$axios.get(
-          `http://localhost:5000/showlads/find_role_played/${this.ckey}/${role}`
+          `https://www.schrecknet.live/showlads/find_role_played/${this.ckey}/${role}`
         );
 
         this.$q.notify({

@@ -77,7 +77,7 @@ export default {
       try {
         this.loaded = false;
         const response = await this.$axios.get(
-          `http://localhost:5000/showlads/pie_chart/${this.ckey}`
+          `https://www.schrecknet.live/showlads/pie_chart/${this.ckey}`
         );
         this.chart_data.datasets[0].data = [];
 

@@ -75,7 +75,7 @@ export default {
   components: { ckey_lookup },
   async created() {
     const ckey_options = await this.$axios.get(
-      "http://localhost:5000/showlads/ckeys",
+      "https://www.schrecknet.live/showlads/ckeys",
       {
         withCredentials: true,
       }

@@ -76,7 +76,7 @@ export default {
     async fetchCkeyData(ckey) {
       try {
         const response = await this.$axios.get(
-          `http://localhost:5000/showlads/ckey_fun_facts/${this.ckey}`
+          `https://www.schrecknet.live/showlads/ckey_fun_facts/${this.ckey}`
         );
         this.fun_facts = response.data;
       } catch (error) {
