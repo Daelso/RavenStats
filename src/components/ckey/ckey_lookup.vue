@@ -51,7 +51,7 @@
                 {{ props.row.role }}
               </q-td>
               <q-td key="date" :props="props">
-                {{ date.formatDate(props.row.date, "M-D-YYYY h:m:ss A") }}
+                {{ date.formatDate(props.row.date, "M-D-YYYY h:m A") }}
               </q-td>
             </q-tr>
           </template>
