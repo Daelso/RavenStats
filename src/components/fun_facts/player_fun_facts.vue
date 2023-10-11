@@ -128,6 +128,7 @@ export default {
           `http://localhost:5000/showlads/ckey/${this.ckey}`
         );
         this.ckey_data = response.data;
+        console.log(this.ckey_data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

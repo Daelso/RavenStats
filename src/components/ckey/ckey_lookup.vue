@@ -1,5 +1,6 @@
 <template>
   <div class="q-pa-md" style="max-width: 1400px">
+    <role_type_pie :ckey="this.ckey" />
     <div>
       <div class="q-pa-md">
         <q-table
@@ -73,10 +74,12 @@
 <script>
 import { date } from "quasar";
 import randy from "../../../public/images/randy.png";
+import role_type_pie from "../charts/role_type_breakdown.vue";
 export default {
   name: "ckey_charts",
   props: ["ckey"],
   emits: ["update:ckey"],
+  components: { role_type_pie },
 
   data() {
     return {
@@ -127,7 +130,7 @@ export default {
           `http://localhost:5000/showlads/ckey/${this.ckey}`
         );
         this.ckey_data = response.data;
-        console.log(this.ckey_data);
+
         this.loading = false;
         if (!this.notif_shown) {
           this.$q.notify({
