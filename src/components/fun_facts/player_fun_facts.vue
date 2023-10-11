@@ -9,7 +9,7 @@
         Played {{ fun_facts[1].static_count }} times
       </div>
       <div class="q-pa-sm">
-        Most Commonly Role: {{ fun_facts[0].role }} - Played
+        Most Commonly Played Role: {{ fun_facts[0].role }} - Played
         {{ fun_facts[0].role_count }} times
       </div>
     </div>
