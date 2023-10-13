@@ -2,14 +2,14 @@
   <q-layout view="hhh lpR lfr">
     <q-header elevated>
       <q-toolbar style="background-color: #222831">
-        <!-- <q-btn
+        <q-btn
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
-        /> -->
+        />
 
         <q-toolbar-title
           style="
@@ -104,6 +104,7 @@ import bum_king from "../../public/images/bum_king.png";
 import randy from "../../public/images/randy.png";
 import cave from "../../public/images/cave.png";
 import operator from "../../public/images/operator.png";
+import migrant from "../../public/images/migrant.png";
 
 import { useQuasar } from "quasar";
 
@@ -122,6 +123,7 @@ export default defineComponent({
       "app:randy": `img:${randy}`,
       "app:reactor": `img:${cave}`,
       "app:operator": `img:${operator}`,
+      "app:migrant": `img:${migrant}`,
     };
 
     const leftDrawerOpen = ref(false);
