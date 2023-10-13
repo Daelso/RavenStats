@@ -105,6 +105,7 @@ import randy from "../../public/images/randy.png";
 import cave from "../../public/images/cave.png";
 import operator from "../../public/images/operator.png";
 import migrant from "../../public/images/migrant.png";
+import pumpkin from "../../public/images/pumpkin.png";
 
 import { useQuasar } from "quasar";
 
@@ -124,6 +125,7 @@ export default defineComponent({
       "app:reactor": `img:${cave}`,
       "app:operator": `img:${operator}`,
       "app:migrant": `img:${migrant}`,
+      "app:pumpkin": `img:${pumpkin}`,
     };
 
     const leftDrawerOpen = ref(false);

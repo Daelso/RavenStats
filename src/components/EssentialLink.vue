@@ -1,4 +1,21 @@
 <template>
+  <q-item clickable style="color: #c4171d" to="character_lookup">
+    <q-item-section avatar>
+      <q-icon
+        color="#C4171D"
+        name="app:pumpkin"
+        size="4em"
+        style="margin-left: -12px; position: absolute"
+      />
+    </q-item-section>
+
+    <q-item-section>
+      <q-item-label>Character Lookup</q-item-label>
+      <q-item-label caption style="color: white"
+        >Find Who Played That Character</q-item-label
+      >
+    </q-item-section>
+  </q-item>
   <q-item
     clickable
     style="color: #c4171d"

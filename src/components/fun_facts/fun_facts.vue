@@ -75,7 +75,7 @@
 }
 
 .fun_facts {
-  height: 11rem;
+  height: 12rem;
   width: 30rem;
   text-shadow: 3px 2px 3px black;
 }
@@ -104,7 +104,7 @@ export default {
       delay: 450, // ms
     });
     const fun_facts = await this.$axios.get(
-      `https://www.schrecknet.live/showlads/fun_facts`
+      `http://localhost:5000/showlads/fun_facts`
     );
 
     this.fun_facts = fun_facts.data;
