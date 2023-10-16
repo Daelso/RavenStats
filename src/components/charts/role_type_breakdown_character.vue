@@ -16,8 +16,8 @@ import { Doughnut } from "vue-chartjs";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default {
-  name: "role_type_pie",
-  props: ["ckey"],
+  name: "role_type_pie_character",
+  props: ["character_name"],
   components: {
     Doughnut,
   },
@@ -71,21 +71,23 @@ export default {
     };
   },
   watch: {
-    ckey: {
-      handler(newCkey, oldCkey) {
-        if (newCkey !== oldCkey) {
-          this.fetchChartData(newCkey);
+    character_name: {
+      handler(newcharacter_name, oldcharacter_name) {
+        if (newcharacter_name !== oldcharacter_name) {
+          this.fetchChartData(newcharacter_name);
         }
       },
       immediate: true, // Trigger the watcher immediately after the component is created
     },
   },
   methods: {
-    async fetchChartData(ckey) {
+    async fetchChartData(character_name) {
       try {
         this.loaded = false;
         const response = await this.$axios.get(
-          `https://www.schrecknet.live/showlads/pie_chart/${ckey}`
+          `https://www.schrecknet.live/showlads/pie_chart_character/${encodeURIComponent(
+            this.character_name
+          )}`
         );
         this.chart_data.datasets[0].data = [];
 

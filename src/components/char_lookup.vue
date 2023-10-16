@@ -19,8 +19,8 @@
         :loading="loading"
       />
     </div>
-    <div v-if="this.ckey">
-      <ckey_lookup v-model:ckey="this.ckey" />
+    <div v-if="this.char_name">
+      <char_name_lookup v-model:character_name="this.char_name" />
     </div>
   </div>
 </template>
@@ -53,9 +53,7 @@
 </style>
 
 <script>
-import { useQuasar } from "quasar";
-import { ref } from "vue";
-import ckey_lookup from "./ckey/ckey_lookup.vue";
+import char_name_lookup from "./char_name/char_lookup.vue";
 
 import { useMeta } from "quasar";
 
@@ -73,11 +71,11 @@ const metaData = {
 };
 
 export default {
-  components: { ckey_lookup },
+  components: { char_name_lookup },
   async created() {
     try {
       const char_options = await this.$axios.get(
-        "http://localhost:5000/showlads/characters",
+        "https://www.schrecknet.live/showlads/characters",
         {
           withCredentials: true,
         }
